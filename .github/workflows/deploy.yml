@@ -24,7 +24,7 @@ jobs:
 
       - name: Build and Push Backend
         run: |
-          docker build -t abylai123/backend:latest ./backend
+          docker build -t abylai123/backend:latest .
           docker push abylai123/backend:latest
 
       # ---------- Frontend Build & Push ----------
