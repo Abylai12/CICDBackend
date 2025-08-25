@@ -3,13 +3,13 @@
   "compilerOptions": {
     // File Layout
     "rootDir": ".",
-    // "outDir": "./dist",
+    "outDir": "./dist",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
     "target": "esnext",
-    "types": ["node", "jest"], // Include Node.js and Jest types
+    "types": ["node"], // Include Node.js and Jest types
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -43,5 +43,6 @@
 
     "esModuleInterop": true
   },
-  "include": ["src", "tests", "**/*.test.ts", "**/*.spec.ts"]
+  "include": ["src"],
+  "exclude": ["tests", "**/*.test.ts", "**/*.spec.ts"]
 }

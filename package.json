@@ -5,7 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/index.ts",
-    "start": "node ./src/index.ts",
+    "build": "tsc",
+    "migrate:make": "knex migrate:make --knexfile knexfile.ts --env development",
+    "migrate:dev": "knex migrate:latest --knexfile knexfile.ts --env development",
+    "migrate:prod": "npm run build && knex migrate:latest --knexfile knexfile.ts --env production",
+    "start": "node dist/src/index.js",
     "test:jest": "jest",
     "test:watch": "jest --watch"
   },

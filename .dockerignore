@@ -1,0 +1,6 @@
+tests/
+**/*.test.ts
+**/*.spec.ts
+jest.config.js
+tsconfig.test.json
+node_modules

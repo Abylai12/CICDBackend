@@ -12,7 +12,7 @@ export const signUp = async (req: Request, res: Response) => {
 
     if (existingUser) {
       return res
-        .status(409)
+        .status(400)
         .json({ message: "User with this email already exists." });
     }
 
@@ -53,7 +53,7 @@ export const signIn = async (req: Request, res: Response) => {
     // 1. Find user by email
     const user = await db("users").where({ email }).first();
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(400).json({ message: "User not found" });
     }
 
     // 2. Compare the provided password with the stored hash
@@ -91,7 +91,7 @@ export const getUserProfile = async (req: Request, res: Response) => {
     const user = await db("users").where({ id: userId }).first();
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(400).json({ message: "User not found" });
     }
 
     // 2. Send back user profile data (without password)
