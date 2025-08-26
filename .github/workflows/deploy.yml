@@ -27,16 +27,15 @@ jobs:
           docker build -t abylai123/backend:latest .
           docker push abylai123/backend:latest
 
-      # ---------- Frontend Build & Push ----------
-
       # ---------- Deploy on Server ----------
       - name: SSH to Server and Deploy
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SERVER_IP }}
-          username: ubuntu
+          username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd ~/my-app
-            docker-compose pull
-            docker-compose up -d backend_app
+              docker-compose pull backend
+            docker-compose up -d backend
+            docker image prune -f
