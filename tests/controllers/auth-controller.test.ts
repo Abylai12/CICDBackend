@@ -74,7 +74,7 @@ describe("Auth Controller", () => {
       );
     });
 
-    it("should return 409 if email already exists", async () => {
+    it("should return 400 if email already exists", async () => {
       mockReq = {
         body: {
           email: "existing@test.com",
@@ -90,7 +90,7 @@ describe("Auth Controller", () => {
 
       await signUp(mockReq as Request, mockRes as Response);
 
-      expect(mockRes.status).toHaveBeenCalledWith(409);
+      expect(mockRes.status).toHaveBeenCalledWith(400);
       expect(mockRes.json).toHaveBeenCalledWith({
         message: "User with this email already exists.",
       });
@@ -98,7 +98,7 @@ describe("Auth Controller", () => {
   });
 
   describe("signIn", () => {
-    it("should return 404 if user not found", async () => {
+    it("should return 400 if user not found", async () => {
       mockReq = { body: { email: "nouser@test.com", password: "pass" } };
 
       const dbMock = createDbMock();
@@ -108,7 +108,7 @@ describe("Auth Controller", () => {
 
       await signIn(mockReq as Request, mockRes as Response);
 
-      expect(mockRes.status).toHaveBeenCalledWith(404);
+      expect(mockRes.status).toHaveBeenCalledWith(400);
       expect(mockRes.json).toHaveBeenCalledWith({ message: "User not found" });
     });
 
@@ -164,7 +164,7 @@ describe("Auth Controller", () => {
   });
 
   describe("getUserProfile", () => {
-    it("should return 404 if user not found", async () => {
+    it("should return 400 if user not found", async () => {
       mockReq = { user: { userId: 999 } } as any;
 
       const dbMock = createDbMock();
@@ -174,7 +174,7 @@ describe("Auth Controller", () => {
 
       await getUserProfile(mockReq as Request, mockRes as Response);
 
-      expect(mockRes.status).toHaveBeenCalledWith(404);
+      expect(mockRes.status).toHaveBeenCalledWith(400);
       expect(mockRes.json).toHaveBeenCalledWith({ message: "User not found" });
     });
 

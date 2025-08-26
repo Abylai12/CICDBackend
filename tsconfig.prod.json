@@ -43,6 +43,6 @@
 
     "esModuleInterop": true
   },
-  "include": ["src", "tests"], // CI болон local test-д tests folder орно
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"],
+  "exclude": ["tests", "**/*.test.ts", "**/*.spec.ts"]
 }

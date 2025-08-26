@@ -20,14 +20,12 @@ const config: { [key: string]: Knex.Config } = {
     },
   },
 
-  staging: {
+  test: {
     client: "pg",
-    connection:
-      process.env.DATABASE_URL ||
-      "postgresql://your_user:your_password@localhost:5432/your_dbname",
+    connection: process.env.DATABASE_URL!,
     pool: { min: 2, max: 10 },
     migrations: {
-      directory: "./migrations",
+      directory: "./src/migrations",
       extension: "ts",
       tableName: "knex_migrations",
     },
