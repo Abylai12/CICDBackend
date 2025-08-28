@@ -9,8 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL, // Allow requests only from your frontend
-  credentials: true, // Allow credentials (cookies or authorization tokens)
+  origin: process.env.NODE_ENV === "test" ? "*" : process.env.CLIENT_URL,
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
