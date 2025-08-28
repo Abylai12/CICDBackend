@@ -25,8 +25,9 @@ const config: { [key: string]: Knex.Config } = {
     connection: process.env.DATABASE_URL!,
     pool: { min: 2, max: 10 },
     migrations: {
-      directory: "./src/migrations",
-      extension: "ts",
+      directory: "./dist/src/migrations",
+      extension: "js",
+      loadExtensions: [".js"],
       tableName: "knex_migrations",
     },
   },
