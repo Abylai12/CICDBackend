@@ -73,6 +73,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd ~/my-app
-            docker-compose -f docker-compose.yml -f docker-compose.dev.yml pull backend
-            docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d backend
+            docker-compose -f docker-compose.prod.yml pull backend_prod
+            docker-compose -f docker-compose.prod.yml up -d backend_prod
+            docker-compose -f docker-compose.test.yml pull backend_test
+            docker-compose -f docker-compose.test.yml up -d backend_test
             docker image prune -f

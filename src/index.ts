@@ -17,7 +17,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (_: Request, res: Response) => {
-  res.send("Hello from Express!");
+  res.send("Hello from Express! backend");
 });
 
 connectDB();
